@@ -1,2 +1,2 @@
-# AxiosBase-SimplePattern
-A Simple Pattern for AxiosBase
+# Axios-SampleConfig
+A Sample Config for Axios
