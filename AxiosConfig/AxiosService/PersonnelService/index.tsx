@@ -5,29 +5,32 @@ import { axiosBase, inputAxiosConfig, methods } from "../../AxiosBase"
 //Sample CRUD Impl.
 
 export const findAllPageable = (page?: number, size?: number) => {
-    inputAxiosConfig.url = "/personnel/findAllPageable";
+    const config = { ...inputAxiosConfig }; // Clone shared config
+    config.url = "/personnel/findAllPageable";
     if (page != null && size != null) inputAxiosConfig.url += `?page=${page}&size=${size}`
-    inputAxiosConfig.method = methods.GET;
-    inputAxiosConfig.token=AuthService.getToken() || "";
-    console.log(AuthService.getToken())
-    return axiosBase(inputAxiosConfig);
+    config.method = methods.GET;
+    config.token=AuthService.getToken() || "";
+    return axiosBase(config);
 }
 export const insertPersonnel = (item: PersonnelModel) => {
-    inputAxiosConfig.url = "/personnel/insertPersonnel";
-    inputAxiosConfig.method = methods.POST;
-    inputAxiosConfig.inputData = item;
-    return axiosBase(inputAxiosConfig);
+    const config = { ...inputAxiosConfig }; // Clone shared config
+    config.url = "/personnel/insertPersonnel";
+    config.method = methods.POST;
+    config.inputData = item;
+    return axiosBase(config);
 }
 
 export const updatePersonnel = (item: PersonnelModel) => {
-    inputAxiosConfig.url = "/personnel/updatePersonnel";
-    inputAxiosConfig.method = methods.PUT;
-    inputAxiosConfig.inputData = item;
-    return axiosBase(inputAxiosConfig);
+    const config = { ...inputAxiosConfig }; // Clone shared config
+    config.url = "/personnel/updatePersonnel";
+    config.method = methods.PUT;
+    config.inputData = item;
+    return axiosBase(config);
 }
 
 export const deletePersonnel = (id: string) => {
-    inputAxiosConfig.url = `/personnel/deletePersonnel/${id}`;
-    inputAxiosConfig.method = methods.DELETE;
-    return axiosBase(inputAxiosConfig);
+    const config = { ...inputAxiosConfig }; // Clone shared config
+    config.url = `/personnel/deletePersonnel/${id}`;
+    config.method = methods.DELETE;
+    return axiosBase(config);
 }
